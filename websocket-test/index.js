@@ -2,5 +2,26 @@ const btn = document.getElementById('btn')
 const socket = new WebSocket('ws://localhost:5005/')
 
 socket.onopen = () => {
-	console.log('Соединение установлено')
+	socket.send(
+		JSON.stringify({
+			method: 'connection',
+			id: 555,
+			username: 'Ulbi TV',
+		})
+	)
+}
+
+socket.onmessage = (event) => {
+	console.log('С сервера пришло сообщение', event.data)
+}
+
+btn.onclick = () => {
+	socket.send(
+		JSON.stringify({
+			message: 'Hello',
+			method: 'message',
+			id: 555,
+			username: 'Ulbi TV',
+		})
+	)
 }
