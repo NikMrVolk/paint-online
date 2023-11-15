@@ -8,7 +8,6 @@ import Line from '../tools/Line'
 import Rect from '../tools/Rect'
 
 const Toolbar = () => {
-
 	return (
 		<div className="toolbar">
 			<div className="toolbar__elements">
@@ -35,8 +34,8 @@ const Toolbar = () => {
 				<input onChange={(e) => toolState.setFillColor(e.target.value)} type="color" />
 			</div>
 			<div className="toolbar__elements">
-				<button className="toolbar__btn undo"></button>
-				<button className="toolbar__btn redo"></button>
+				<button className="toolbar__btn undo" onClick={() => canvasState.undo()}></button>
+				<button className="toolbar__btn redo" onClick={() => canvasState.redo()}></button>
 				<button className="toolbar__btn save"></button>
 			</div>
 		</div>
