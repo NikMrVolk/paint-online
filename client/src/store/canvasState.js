@@ -4,6 +4,7 @@ class CanvasState {
 	canvas = null
 	undoList = []
 	redoList = []
+	username = ''
 
 	constructor() {
 		makeAutoObservable(this)
@@ -11,6 +12,10 @@ class CanvasState {
 
 	setCanvas(canvas) {
 		this.canvas = canvas
+	}
+
+	setUsername(name) {
+		this.username = name
 	}
 
 	pushToUndo(data) {
@@ -24,7 +29,6 @@ class CanvasState {
 	undo() {
 		let ctx = this.canvas.getContext('2d')
 		if (this.undoList.length > 0) {
-
 			let dataUrl = this.undoList.pop()
 			this.redoList.push(this.canvas.toDataURL())
 			let img = new Image()
