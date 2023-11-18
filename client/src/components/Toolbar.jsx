@@ -19,7 +19,9 @@ const Toolbar = () => {
 				></button>
 				<button
 					className="toolbar__btn rect"
-					onClick={() => toolState.setTool(new Rect(canvasState.canvas))}
+					onClick={() =>
+						toolState.setTool(new Rect(canvasState.canvas, canvasState.socket, canvasState.sessionId))
+					}
 				></button>
 				<button
 					className="toolbar__btn circle"
