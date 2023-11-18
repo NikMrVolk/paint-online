@@ -8,6 +8,16 @@ import Line from '../tools/Line'
 import Rect from '../tools/Rect'
 
 const Toolbar = () => {
+	const download = () => {
+		const dataUrl = canvasState.canvas.toDataURL()
+		const a = document.createElement('a')
+		a.href = dataUrl
+		a.download = canvasState.sessionId + '.jpg'
+		document.body.appendChild(a)
+		a.click()
+		document.body.removeChild(a)
+	}
+
 	return (
 		<div className="toolbar">
 			<div className="toolbar__elements">
@@ -40,7 +50,7 @@ const Toolbar = () => {
 			<div className="toolbar__elements">
 				<button className="toolbar__btn undo" onClick={() => canvasState.undo()}></button>
 				<button className="toolbar__btn redo" onClick={() => canvasState.redo()}></button>
-				<button className="toolbar__btn save"></button>
+				<button className="toolbar__btn save" onClick={() => download()}></button>
 			</div>
 		</div>
 	)
